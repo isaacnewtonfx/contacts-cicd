@@ -14,7 +14,8 @@ The project follows Agile Methodology using Docker, Travis-CI, CICD custom deplo
 
 1. Setup nginx subdomain to reverse proxy /contacts to 
 
-   ```#static uri location
+   ```
+   #static uri location
     location /static_contacts/ {
         root /path/to/project/root folder/;
     }
@@ -39,7 +40,8 @@ The project follows Agile Methodology using Docker, Travis-CI, CICD custom deplo
         proxy_max_temp_file_size 0;
         proxy_read_timeout 300;
         expires off;
-   }```
+   }
+   ```
 
 
 2. Install Docker Engine and Docker Compose on the server. Use the command `$ docker info` to check if docker is installed
