@@ -1,0 +1,81 @@
+{% extends "layout/master.html" %}
+{% load static %}
+{% block title %}Add New Contact{% endblock %}
+
+{% block content %}
+
+<div class="col-sm-6">
+
+<h3>Add New Contact</h3>
+<i>(Note. All fields tagged with a star symbol(*) are strictly required)</i>
+<hr/>
+
+    <!--Show notification/error messages here -->
+	{% if messages %}
+		{% include "layout/messages.html" %}
+	{% endif %}
+
+
+<form class="row" method="post" action="{% url 'contacts:add' %}">
+{% csrf_token %}
+
+	<div class="col-sm-6">	
+		<!--First Name-->
+		<div class="form-group">
+			<label for="firstname">First Name*</label>
+			<input type="text" name="firstname" size="50" maxlength="30" class="form-control" value="{{ contactform.firstname.value }}"  >
+			<small class="alert-danger">{{ contactform.firstname.errors }}</small>
+		</div>
+
+
+		<!--Middle Name-->
+		<div class="form-group">
+			<label for="middlename">Middle Name</label>
+			<input type="text" name="middlename" size="50" maxlength="30" class="form-control" value="{{ contactform.middlename.value }}"  >
+			<small class="alert-danger">{{ contactform.middlename.errors }}</small>
+		</div>
+
+
+		<!--Last Name-->
+		<div class="form-group">
+			<label for="lastname">Last Name*</label>
+			<input type="text" name="lastname" size="50" maxlength="30" class="form-control" value="{{ contactform.lastname.value }}"  >
+			<small class="alert-danger">{{ contactform.lastname.errors }}</small>
+		</div>
+	</div>
+
+	<div class="col-sm-6">	
+		<!--Email-->
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="text" name="email" size="50" maxlength="30" class="form-control" value="{{ contactform.email.value }}"  >
+			<small class="alert-danger">{{ contactform.email.errors }}</small>
+		</div>
+
+
+		<!--Tel1-->
+		<div class="form-group">
+			<label for="tel1">Tel1*</label>
+			<input type="text" name="tel1" size="50" maxlength="30" class="form-control" value="{{ contactform.tel1.value }}"  >
+			<small class="alert-danger">{{ contactform.tel1.errors }}</small>
+		</div>
+
+
+		<!--Tel2-->
+		<div class="form-group">
+			<label for="tel2">Tel2</label>
+			<input type="text" name="tel2" size="50" maxlength="30" class="form-control" value="{{ contactform.tel2.value }}"  >
+			<small class="alert-danger">{{ contactform.tel2.errors }}</small>
+		</div>
+	</div>
+
+	<span class="clearfix"></span>
+    <hr />
+    <a class="btn btn-sm btn-default" href="{% url 'contacts:index' %}">Back</a>
+    <button class="btn btn-sm btn-primary" type="submit">Add Contact</button>
+
+</form>
+
+
+</div>
+{% endblock %}

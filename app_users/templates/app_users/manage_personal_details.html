@@ -1,0 +1,78 @@
+{% load static %}
+
+<h2 style="color: rgba(149, 149, 149, 0.80);">Manage Personal Details</h2>
+<i>(Note. All fields tagged with a star symbol(*) are strictly required)</i>
+<br/><br/>
+
+
+<!--Show notification/error messages here -->
+{% if messages %}
+    {% include "layout/messages.html" %}
+{% endif %}
+ 
+<form enctype="multipart/form-data" method="post" action="{% url 'users:manage_personal_details' %}">
+{% csrf_token %}
+
+<div class="row">           
+    <div class="col-sm-5">
+
+        <!--Firstname-->
+        <div class="form-group">
+            <label for="firstname">Firstname*</label>
+            <input type="text" name="firstname" size="50" maxlength="30" class="form-control" value="{{ form.firstname.value }}"  >
+            <small class="alert-danger">{{ form.firstname.errors }}</small>
+        </div>
+
+        <!--Middlename-->
+        <div class="form-group">
+            <label for="middlename">Middlename</label>
+            <input type="text" name="middlename" size="50" maxlength="30" class="form-control" value="{{ form.middlename.value }}"  >
+            <small class="alert-danger">{{ form.middlename.errors }}</small>
+        </div>
+
+        <!--Lastname-->
+        <div class="form-group">
+            <label for="lastname">Lastname*</label>
+            <input type="text" name="lastname" size="50" maxlength="30" class="form-control" value="{{ form.lastname.value }}"  >
+            <small class="alert-danger">{{ form.lastname.errors }}</small>
+        </div>
+
+
+        <!--Email-->
+        <div class="form-group">
+            <label for="email">Email*</label>
+            <input type="text" name="email" size="50" maxlength="30" class="form-control" value="{{ form.email.value }}"  >
+            <small class="alert-danger">{{ form.email.errors }}</small>
+        </div>
+
+
+        <!--Phone-->
+        <div class="form-group">
+            <label for="phone">Phone #</label>
+            <input type="text" name="phone" size="50" maxlength="30" class="form-control" value="{{ form.phone.value }}"  >
+            <small class="alert-danger">{{ form.phone.errors }}</small>
+        </div>
+
+    </div>
+
+    <div class="col-sm-5">
+
+        <!--upload photo-->
+        <div class="form-group">
+            <label for="photo">Upload Photo (5Mb Max) </label>              
+            {% if form.photo %}{{ form.photo }}{% else %}{{ form.photo }}{% endif %}
+            <div class="img-container">
+                <img id="userPhoto2" class="img-rounded img-responsive" alt="photo" src="/media/{{user.profile.photo.name}}" />
+
+                <span class="btn btn-default btn-sm clrPhoto">Clear Photo</span>
+                <small class="alert-danger">{{ form.photo.errors }}</small>
+            </div>
+        </div>
+    </div>
+
+    <span class="clearfix"></span>
+
+    <hr/>
+    <input class="btn btn-sm btn-primary" type="submit" value="Update" name="submit" />   
+</div>
+</form>

@@ -1,0 +1,127 @@
+{% extends "layout/master.html" %}
+{% load static %}
+{% block title %}Registration{% endblock %}
+
+
+{% block extra_styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'app_users/css/app.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app_users/css/tablet_and_up.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app_users/css/desktop_and_up.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app_users/css/large_desktops_and_up.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+{{ form.non_field_errors }}
+<div class="col-sm-8">
+
+
+ <h2>Register</h2>
+ <i>(Note. All fields tagged with a star symbol(*) are strictly required)</i>
+ <hr />
+
+<!--Show notification/error messages here -->
+{% if messages %}
+    {% include "layout/messages.html" %}
+{% endif %}
+
+
+<form class="row" enctype="multipart/form-data" method="post" action="{% url 'users:registration' %}">
+{% csrf_token %}
+
+	<div class="col-sm-6">
+
+		<!--Username-->
+		<div class="form-group">
+			<label for="username">Username*</label>
+			<input type="text" name="username" size="50" maxlength="30" class="form-control" value="{{ regform.username.value }}"  >
+			<small class="alert-danger">{{ regform.username.errors }}</small>
+		</div>
+
+		<!--Password-->
+		<div class="form-group">
+			<label for="password">Password*</label>
+			<input type="password"  name="password" size="50" maxlength="30" class="form-control" value="{{ regform.password.value }}" >
+			<small class="alert-danger">{{ regform.password.errors }}</small>
+		</div>
+
+		<!--Password Confirmation-->
+		<div class="form-group">
+			<label for="conf_password">Confirm Password*</label>
+			<input type="password" name="conf_password" size="50" maxlength="30" class="form-control" value="{{ regform.conf_password.value }}"  >
+			<small class="alert-danger">{{ regform.conf_password.errors }}</small>
+		</div>
+
+		<!--Firstname-->
+		<div class="form-group">
+			<label for="firstname">Firstname*</label>
+			<input type="text" name="firstname" size="50" maxlength="30" class="form-control" value="{{ regform.firstname.value }}"  >
+			<small class="alert-danger">{{ regform.firstname.errors }}</small>
+		</div>
+
+		<!--Middlename-->
+		<div class="form-group">
+			<label for="middlename">Middlename</label>
+			<input type="text" name="middlename" size="50" maxlength="30" class="form-control" value="{{ regform.middlename.value }}"  >
+			<small class="alert-danger">{{ regform.middlename.errors }}</small>
+		</div>
+
+		<!--Lastname-->
+		<div class="form-group">
+			<label for="lastname">Lastname*</label>
+			<input type="text" name="lastname" size="50" maxlength="30" class="form-control" value="{{ regform.lastname.value }}"  >
+			<small class="alert-danger">{{ regform.lastname.errors }}</small>
+		</div>
+
+	</div>
+
+	<div class="col-sm-6">
+
+		<!--Email-->
+		<div class="form-group">
+			<label for="email">Email*</label>
+			<input type="text" name="email" size="50" maxlength="30" class="form-control" value="{{ regform.email.value }}"  >
+			<small class="alert-danger">{{ regform.email.errors }}</small>
+		</div>
+
+		<!--Phone-->
+		<div class="form-group">
+			<label for="phone">Phone #</label>
+			<input type="text" name="phone" size="50" maxlength="30" class="form-control" value="{{ regform.phone.value }}"  >
+			<small class="alert-danger">{{ regform.phone.errors }}</small>
+		</div>
+
+		<!--upload photo-->
+		<div class="form-group">
+			<label for="photo">Upload Photo (5Mb Max) </label>				
+			{% if emptyForm.photo %}{{ emptyForm.photo }}{% else %}{{ regform.photo }}{% endif %}
+			<div class="img-container">
+				<img id="userPhoto" class="img-rounded img-responsive" alt="photo" src="{% static "app_users/img/usericon.svg" %}" />
+
+				<span class="btn btn-default btn-sm clrPhoto">Clear Photo</span>
+				<small class="alert-danger">{{ regform.photo.errors }}</small>
+			</div>
+		</div>
+		<br/>
+
+	
+	</div>
+
+
+	<span class="clearfix"></span>
+    <hr />
+	<input class="btn btn-primary" type="submit" value="Register" name="register" />
+
+	&nbsp; &nbsp;
+		<a href="{% url 'users:login' %}"> Already a member? Login here</a>
+
+</form>
+
+
+</div>
+{% endblock %}
+
+
+{% block extra_scripts %}
+<script type="text/javascript" src="{% static 'app_users/js/app.js' %}" ></script>
+{% endblock %}

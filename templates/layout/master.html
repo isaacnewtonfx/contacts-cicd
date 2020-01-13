@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE HTML >
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name ="viewport" content="width=device-width, initial scale=1.0">
+		<title>{% block title %}Homepage{% endblock %}</title>
+
+		<!-- bootstrap -->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap/bootstrap.css' %}" />
+
+		{% block extra_styles %}{% endblock %}
+
+		<!--site css-->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/site.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/tablet_and_up.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/desktop_and_up.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/large_desktops_and_up.css' %}" />
+</head>
+	
+	<body>
+
+		<!-- Fixed navbar -->
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="{% url 'homepage:index' %}">
+						<img style="display:inline;height:40px;width:40px" src="{% static 'img/logo.png' %}" alt="BrandName" /> Phonebook
+					</a>
+				</div>
+
+				<!-- here is the main navigation links -->
+				<div class="navbar-collapse collapse navbar-right">
+					<ul class="nav navbar-nav">					
+						<li class="active"> <a href="{% url 'homepage:index' %}">Home</a></li>
+						{% if not user.is_authenticated %}
+							<li><a style='border-radius:20px' href="{% url 'users:login' %}">Login</a></li>
+							<li><a href="{% url 'users:registration' %}">Register</a></li>
+						{% endif %}
+						<li><a href="{% url 'homepage:about' %}">About Us</a></li>
+						<li><a href="{% url 'homepage:contact' %}">Contact Us</a></li>
+
+
+						<!--Public Menu-->
+						{% if user.is_authenticated %}
+							<li class="dropdown">								
+								<li><a href="{% url 'contacts:index' %}">My Contacts</a></li>							
+							</li>
+						{% endif %}
+					
+
+						<!--Admin Dashboard-->
+						{% if user.is_superuser %}
+							<li><a class="nav-anchor dropdown-toggle" data-toggle="dropdown" href="">Dashboard</a></li>
+						{% endif %}
+		
+
+						<!--Account Management and Logout-->
+						{% if user.is_authenticated %}
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#"> <icon class="fa fa-user"></icon> {{user.username}} <b class="caret"></b> </a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="{% url 'users:manage' %}">My Account</a></li>
+									<li><a href="{% url 'users:logout' %}">Logout</a></li>		
+								</ul>
+							</li>
+						{% endif %}
+
+
+
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</nav>
+
+		<section style="{% if not logged_in %} margin-top:60px {% else %} margin-top:0 {% endif %}" >
+			<div style="padding:0 20px">
+
+        		{% block content %}{% endblock %}
+
+			</div>
+		</section>
+
+	<!--For responsive testing purposes-->
+<!--	<div class="visible-xs"> now in xs</div>-->
+<!--	<div class="visible-sm"> now in sm</div>-->
+<!--	<div class="visible-md"> now in md</div>-->
+<!--	<div class="visible-lg"> now in lg</div>-->
+
+	<script type="text/javascript" src="{% static 'js/jquery-1.11.1.js' %}" ></script>	
+	<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap.js' %}" ></script>
+
+	<!--site script-->
+	<script type="text/javascript" src="{% static 'js/site.js' %}" ></script>
+
+	{% block extra_scripts %}{% endblock %}
+
+	</body>
+</html>

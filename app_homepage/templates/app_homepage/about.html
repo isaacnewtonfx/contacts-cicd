@@ -1,0 +1,26 @@
+{% extends "layout/master.html" %}
+{% load static %}
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+
+<h2>About Us</h2>
+<hr/>
+
+<div>	
+	<div class="col-sm-6">
+		<h3>Our Noble Team</h3>
+		<img style="max-width: 100%" src="{% static "img/team.jpg" %}" alt="team" />
+	</div>
+	<div class="col-sm-1"></div>
+
+	<div class="col-sm-5">
+		<h3>Who we are</h3>
+		We are an award winning engineering and data management company with datacenters all over the world.
+		Make use of our unlimited space to conviniently store your contacts and always get backup of your data.
+		We utilize the <strong>world's most advanced</strong> object relational database management system to store,manage and make sure your data is safe from <strong>hackers!</strong>.Stay with us as we provide you with our incredible services.
+	</div>
+
+</div>
+
+{% endblock %}

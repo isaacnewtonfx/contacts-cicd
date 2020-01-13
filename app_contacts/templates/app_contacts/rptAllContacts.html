@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE HTML >
+<html>
+<head>
+	<title>Report</title>  
+</head>
+
+<body>
+    <table>
+      <tbody>                 
+        <tr>
+            <td style="width:150px;"> <img style="height:70px;width:70px" src="{{ domain }}/static/img/logo.png" /> </td>
+            <td style="text-align: center"> <span style="font-weight:bold;font-size: 20px;">ALL CONTACTS REPORT</span> </td>
+            <td style="width:150px"> <p>Printed on : {{today}}</p> </td>
+        </tr>
+      </tbody>
+    </table>
+<hr>
+
+<div>
+	<table>
+      <thead>
+         <tr>
+             <th style="text-align: left;width:120px"> First Name</th>
+             <th style="text-align: left;width:120px"> Middle Name</th>
+             <th style="text-align: left;width:120px"> Last Name</th>
+             <th style="text-align: left;width:200px"> Email</th>
+             <th style="text-align: left;width:120px"> Tel1</th>
+             <th style="text-align: left;width:120px"> Tel2</th>
+         </tr>
+      </thead>
+          <tbody>
+            {% for contact in contacts %}              
+                <tr>
+                    <td> {{contact.firstname}} </td>
+                    <td> {{contact.middlename}} </td>
+                    <td> {{contact.lastname}} </td>
+                    <td> {{contact.email}} </td>
+                    <td> {{contact.tel1}} </td>
+                    <td> {{contact.tel2}} </td>
+                </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+</div>
+
+</body>
+</html>

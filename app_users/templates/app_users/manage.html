@@ -1,0 +1,39 @@
+{% extends "layout/master.html" %}
+{% load staticfiles %}
+{% block title %}Manage Account{% endblock %}
+
+{% block content %}
+<div id="my-account-page">
+
+    <h2>My Account</h2>
+    <hr/>
+
+    <div align="center">
+        <a href="{% url 'users:manage_personal_details' %}" class='btn btn-sm btn-default'>Personal Details</a>
+        <a href="{% url 'users:change_user_password' %}" class='btn btn-sm btn-default'>Change Password</a>
+    </div>
+    <hr/>
+
+    <div>
+
+        <!--Show alert messages here -->
+        {% if messages %}
+            {% include "layout/messages.html" %}
+        {% endif %}
+
+
+        <!--Show dynamic info here -->
+        {% if show_personal_details %}
+            {% include "app_users/manage_personal_details.html" %}
+        {% elif show_change_password %}
+            {% include "app_users/change_user_password.html" %}
+        {% endif %}
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript" src="{% static 'app_users/js/app.js' %}" ></script>
+{% endblock %}

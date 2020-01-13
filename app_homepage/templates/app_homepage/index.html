@@ -1,0 +1,103 @@
+{% extends "layout/master.html" %}
+
+{% load static %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block extra_styles %}
+<!-- anything slider -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/anythingslider/theme-metallic.css' %}" />
+
+<!--circle hover-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/circlehover/circle-hover.css' %}" />
+
+<!--textillate-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/textillate/animate.css' %}" />
+
+<link rel="stylesheet" type="text/css" href="{% static 'app_homepage/css/app.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app_homepage/css/tablet_and_up.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app_homepage/css/desktop_and_up.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app_homepage/css/large_desktops_and_up.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+
+    <!--Show notification/error messages here -->
+    {% if success_msg %}
+        {% include "layout/success_msg.html" %}
+    {% elif error_msg %}
+        {% include "layout/error_msg.html" %}
+    {% endif %}
+
+    <div>
+        <div style="margin-top: 20px" class="jumbotron">
+            <h1>Welcome to Phonebook!!!!</h1>
+            <p>Your online phonebook available 24/7</p>
+        </div>
+    </div>
+
+
+    <!-- Main component for a marketing and ads / hide on mobile phones-->
+    <div style="text-align: center;" class="hidden-xs">
+        <img src="{% static 'img/bg.jpg' %}" height="400px" />
+    </div>
+
+    <div style="text-align: center;" class="visible-xs">
+        <img src="{% static 'img/bg.jpg' %}" width="400px" />
+    </div>
+
+
+    <!-- Circle hover-->
+    <section class="content-holder b-none">
+        <section class="container container-fluid">
+            <ul class="ch-grid">
+                <li>
+                    <div class="ch-item ch-img-1">
+                        <div class="ch-info">
+                            <h3>Create </h3>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="ch-item ch-img-2">
+                        <div class="ch-info">
+                            <h3>Update</h3>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="ch-item ch-img-3">
+                        <div class="ch-info">
+                            <h3>Delete </h3>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="ch-item ch-img-4">
+                        <div class="ch-info">
+                            <h3>Report</h3>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </section>
+{% endblock %}
+
+
+{% block extra_scripts %}
+	<!--anything slider-->
+	<script type="text/javascript" src="{% static 'js/anythingslider/jquery.easing.1.2.js' %}" ></script>
+	<script type="text/javascript" src="{% static 'js/anythingslider/jquery.anythingslider.js' %}" ></script>
+
+	<!--textillate-->
+	<script type="text/javascript" src="{% static 'js/textillate/jquery.lettering.js' %}" ></script>
+    <script type="text/javascript" src="{% static 'js/textillate/jquery.textillate.js' %}" ></script>
+
+    <!-- cycle -->
+	<script type="text/javascript" src="{% static 'js/cycle/jquery.cycle.all.js' %}" ></script>
+    
+    <script type="text/javascript" src="{% static 'app_homepage/js/app.js' %}" ></script>
+
+{% endblock %}

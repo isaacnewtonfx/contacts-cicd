@@ -1,0 +1,29 @@
+{% extends "layout/master.html" %}
+{% load static %}
+{% block title %}Dialog{% endblock %}
+
+{% block content %}
+<div align="center">
+    <div class="alert alert-success" role="alert">
+        <h4><strong>{{dialog_title}}</strong></h4>
+        <br><br>
+
+        <p>{{dialog_msg}}</p>
+        <br>
+
+           <!-- Yes or No selection -->
+            <form class="row" method="post" action="{% url action_url args %}">
+            {% csrf_token %}
+
+                   <select name = "option" >
+                        <option selected value = "no"> No </option>
+                        <option value = "yes"> Yes </option>
+                   </select>
+
+                   &nbsp;&nbsp;&nbsp;
+
+                  <input class = "btn btn-sm btn-primary" type = "submit" name = "submit" value = "Submit" >
+            </form>
+     </div>
+</div>
+{% endblock %}

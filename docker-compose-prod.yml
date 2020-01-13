@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    web:
+        build: .
+        image: testcontacts:v1
+        ports:
+            - "9001:9001"
+        expose:
+            - "9001"
+        command: gunicorn -w 2 --bind 0.0.0.0:9001 --access-logfile - project.wsgi:application
+        environment: 
+            # - DB_PASS
+            # - DB_USER
+            # - DB_PORT
+            # - HOST
+            - DJANGO_SETTINGS_MODULE=project.settings.prod

@@ -1,0 +1,36 @@
+{% extends "layout/master.html" %}
+{% load static %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+{{ form.non_field_errors }}
+<div class="col-sm-6">
+	<h2>Login</h2><hr/>
+
+    <!--Show notification/error messages here -->
+	{% if messages %}
+		{% include "layout/messages.html" %}
+	{% endif %}
+
+	<form method="post" action="{% url 'users:login' %}">
+	{% csrf_token %}
+		
+		Username/Email:<br />
+		<input type="text" name="username" value="{{ loginform.username.value }}" class="form-control" />
+		<small class="alert-danger">{{ loginform.username.errors }}</small>
+
+		Password:<br />
+		<input type="password" name="password" value="{{ loginform.password.value }}" class="form-control" />
+		<small class="alert-danger">{{ loginform.password.errors }} </small>
+
+		<!--remember me-->
+		<div><input name="remember_me" type="checkbox"/> Remember Me</div>
+		<br/>
+
+		<input class="btn btn-sm btn-primary" type="submit" value="Login" name="login" />
+		&nbsp; &nbsp;
+		<a href="{% url 'users:registration' %}"> Not a member? Register here</a>
+	</form>
+</div>
+{% endblock %}

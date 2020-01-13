@@ -1,0 +1,23 @@
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+    /*CSS for slider on home page*/
+    #sliderwrapper{
+        margin-top: 58px;
+    }
+    /*End of CSS of slider*/
+
+
+    /*Navigation links*/
+    .navbar-right{
+        float: right !important;
+    }
+    /*End Navigation links*/
+
+    /*All pages margin top*/
+    #all-contacts-page,#add-contacts-page,#edit-contacts-page,#send-email-page{
+        margin-top:60px;
+    }
+    /*End of All pages margin top*/
+
+}

@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+    web:
+        build: .
+        image: testcontacts:v1
+        ports:
+            - "9001:9001"
+        expose:
+            - "9001"
+        command: python manage.py runserver 0.0.0.0:9001
