@@ -37,6 +37,7 @@ CORS_ORIGIN_WHITELIST = (
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -127,16 +129,17 @@ USE_TZ = True
 
 
 # Media is for any user upload files(img,pdf,videos etc)
-MEDIA_URL = '/media_contacts/'
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'media_contacts')
+MEDIA_URL = '/media/'
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 #STATIC_URL = 'https://storage.googleapis.com/enhanced-rite-200319/static/'
-STATIC_URL = '/static_contacts/'
-STATIC_ROOT =  os.path.join(BASE_DIR, 'static_contacts')
+STATIC_URL = '/static/'
+STATIC_ROOT =  os.path.join(BASE_DIR, 'staticfiles')
+
 
 #staticfiles_dirs is additional directories to search for static files
 STATICFILES_DIRS = (

@@ -1,0 +1,33 @@
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width:1200px){
+
+
+    /*CSS for user account popover*/
+    .popover{
+        width:500%;
+        padding-right: 0px;
+        /*left:-208px !important;*/
+    }
+
+
+    #my-account-div {
+        padding-left:0;
+    }
+
+    #main-photo-div{
+        margin-left:0;
+    }
+
+    #change-photo-div{
+        margin-left: 0px;
+    }
+
+    #acctphoto{
+        height:100px;
+    }
+
+    /*End of user account popover*/
+
+
+
+}

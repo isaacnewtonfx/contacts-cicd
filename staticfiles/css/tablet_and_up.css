@@ -1,0 +1,46 @@
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+    /*CSS for user account popover*/
+    .popover{
+        width:500%;
+        padding-right: 0px;
+    }
+
+    #my-account-div {
+        padding-left:15px;
+    }
+
+    #main-photo-div{
+        margin-left: 80px;
+    }
+
+    #change-photo-div{
+        margin-left: 10px;
+    }
+    #acctphoto{
+        height:100px;
+    }
+    /*End of user account popover*/
+
+
+    /*CSS for slider on home page*/
+    #sliderwrapper{
+        margin-top: 110px;
+    }
+    /*End of CSS of slider*/
+
+    /*Navigation links*/
+    .navbar-right{
+        float: left !important;
+    }
+    /*End Navigation links*/
+
+
+    /*All pages margin top*/
+    #all-contacts-page,#add-contacts-page,#edit-contacts-page,#send-email-page{
+        margin-top:110px;
+    }
+    /*End of All pages margin top*/
+
+}

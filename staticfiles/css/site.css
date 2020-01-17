@@ -1,0 +1,76 @@
+﻿body{
+    position:absolute;
+}
+
+hr{
+    border:2px solid #e6e6ed;
+}
+
+/*CSS for user account popover*/
+#AccountPopoverContent{
+    display: none;
+}
+
+.popover{
+    /*padding-right: 80px;*/
+    max-width: none;
+    width:400px;
+}
+
+.popover-content{
+    width:100%;
+}
+
+#change-photo-div{
+    text-align: center;
+    position:absolute;
+    top:80%;
+    background-color:rgba(77, 92, 255, 0.45);
+    border-radius: 5px;
+
+}
+
+#change-photo-div a{
+    text-decoration:none;
+    color:white;
+}
+
+#acctphoto{
+    width:100%;
+    height:180px;
+    border-radius: 10px;
+}
+
+.logout-btn{
+    margin-top: 10px
+}
+/*End of user account popover*/
+
+/*Specific nav*/
+.specific-nav{
+    margin-top: 55px;
+    margin-bottom: 0;
+}
+.specific-nav li{
+    text-decoration: none;
+    display: inline;
+    margin-right: 10px;
+}
+
+/*End of specific nav*/
+
+
+/*All pages margin top*/
+    #all-contacts-page,#add-contacts-page,#edit-contacts-page,#send-email-page,#my-account-page{
+    margin-top:60px;
+}
+/*End of All pages margin top*/
+
+
+
+/* Reset the body position (500px and up) */
+@media (min-width: 500px) {
+    body{
+        position: static;
+    }
+}
