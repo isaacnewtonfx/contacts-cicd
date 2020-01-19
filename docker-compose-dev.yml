@@ -9,3 +9,11 @@ services:
         expose:
             - "9001"
         command: python manage.py runserver 0.0.0.0:9001
+        environment: 
+            # - DB_PASS
+            # - DB_USER
+            # - DB_PORT
+            # - HOST
+            - DJANGO_SETTINGS_MODULE=project.settings.dev
+        volumes:
+            - ./media:/app/media
