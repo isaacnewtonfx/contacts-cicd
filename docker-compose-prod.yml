@@ -6,8 +6,6 @@ services:
         image: barebone/apps:contacts-cicd
         ports:
             - "9001:9001"
-        expose:
-            - "9001"
         command: gunicorn -w 2 --bind 0.0.0.0:9001 --access-logfile - project.wsgi:application
         environment: 
             # - DB_PASS
@@ -17,3 +15,31 @@ services:
             - DJANGO_SETTINGS_MODULE=project.settings.prod
         volumes:
             - ./media:/app/media
+
+        #required for traefik to work
+        networks:
+            - traefik-stack
+        
+        # deploy config for traefik in swarm mode
+        deploy:
+            replicas: 3
+
+            #minimal required labels for traefik swarm mode
+            labels:
+                - traefik.http.services.contacts_cicd.loadbalancer.server.port=9001
+                - traefik.docker.network=traefik-stack
+                - traefik.backend.loadbalancer.stickiness=true
+                - traefik.http.services.contacts_cicd.loadbalancer.sticky=true 
+                - traefik.http.services.contacts_cicd.loadbalancer.sticky.cookie.name=StickyCookie
+                - traefik.http.routers.contacts_cicd1.rule=PathPrefix(`/contacts`)
+                - traefik.http.routers.contacts_cicd2.rule=PathPrefix(`/static_contacts`)
+            
+            #required for traefik to run only on manager node
+            placement:
+                constraints:
+                    - node.role == manager 
+                    
+#required for traefik to work
+networks:
+    traefik-stack:
+        external: true
